@@ -1,0 +1,11 @@
+Package: Ipl
+Title: R package for analysing Ipl player performance metrics
+Version: 0.0.0.9000
+Authors@R: 
+    person("Shivesh Krishna", "Palanisamy", , "spal0044@student.monash.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: The Ipl package provides tools to analyze IPL 2022 player performance metrics, including batting averages, strike rates, and bowling economies. The package also includes a Shiny app for interactive data exploration, helping teams optimize their auction strategies.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2

@@ -1,0 +1,16 @@
+---
+title: "Ipl"
+output: github_document
+---
+
+# Ipl: Analyzing IPL 2022 Data for Auction Strategy Optimization
+
+The **Ipl** package provides tools to analyze and explore IPL 2022 player performance metrics such as batting averages, strike rates, and bowling economies. This package also includes a Shiny app that allows users to interactively explore player statistics and make informed decisions for IPL auction strategy optimization.
+
+## Installation
+
+You can install the development version of the package from GitHub:
+
+```r
+# Install Ipl from GitHub
+remotes::install_github("yourusername/Ipl")
