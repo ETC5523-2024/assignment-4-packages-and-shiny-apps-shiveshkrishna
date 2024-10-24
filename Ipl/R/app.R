@@ -146,4 +146,3 @@ server <- function(input, output) {
 #' @return A Shiny app object that is ready to be run.
 #' @export
 shinyApp(ui = ui, server = server)
-
