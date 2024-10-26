@@ -210,7 +210,7 @@ The **Ipl** package offers a comprehensive toolset for IPL teams, analysts, and 
 
 -   **Batting Performance**: Players with a high strike rate are often more valuable in T20 cricket, where quick scoring can make the difference between winning and losing. The analysis of **Batting Average vs Strike Rate** helps identify players who balance consistency with explosiveness, making them ideal candidates for IPL auctions.
 
--   **Bowling Performance**: Bowlers who maintain a low economy rate while consistently taking wickets are crucial for controlling the opposition’s scoring. The analysis of **Bowling Average vs Economy Rate** highlights bowlers who can both take wickets and limit runs, making them valuable assets in high-pressure situations.
+-   **Bowling Performance**: Bowlers who maintain a low economy rate while consistently taking wickets are crucial for controlling the opposition’s scoring. The analysis of **Bowling Average vs Economy Rate** highlights bowlers who can both take wickets and limit runs, making them valuable assets in high-pressure situations. 
 
 ### Use the Shiny App for Interactive Exploration
 
