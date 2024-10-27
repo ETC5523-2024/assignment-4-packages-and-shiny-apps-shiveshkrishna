@@ -23,7 +23,7 @@ For full documentation and additional details, visit the Pkgdown [Site](https://
 
 The `Ipl` package includes an interactive Shiny app for exploring IPL 2022 player performance data. To launch the app, use the following command:
 
-```{r}
+```{r eval=FALSE}
 # Load the Ipl package and launch the Shiny app
 library(Ipl)
 launch_app()

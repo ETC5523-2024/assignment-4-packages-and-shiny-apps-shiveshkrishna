@@ -22,7 +22,6 @@
 #' @section Datasets:
 #' - \code{ipl_high_performers}: IPL players' performance metrics for batting and bowling.
 #'
-#' @docType package
 #' @name Ipl
 NULL
 
@@ -45,10 +44,6 @@ NULL
 #' }
 #'
 #' @source IPL 2022 player statistics dataset
-#' @examples
-#' data(ipl_high_performers)
-#' head(ipl_high_performers)
-"ipl_high_performers"
 
 #' Launch the IPL Auction Shiny App
 #'
@@ -57,9 +52,6 @@ NULL
 #' Strike Rate, Bowling Average, and Economy Rate, useful for IPL auction strategy.
 #'
 #' @return Launches the Shiny app in a browser window.
-#' @examples
-#' # To launch the Shiny app:
-#' launch_app()
 #' @export
 launch_app <- function() {
   app_dir <- system.file("shinyapp", package = "Ipl")

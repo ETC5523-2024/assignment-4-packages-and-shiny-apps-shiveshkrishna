@@ -1,4 +1,4 @@
-#' Launch the Coffee Preferences Shiny App
+#' Launch the Ipl player performance Shiny App
 #'
 #' @description
 #' This function launches the Ipl player performace Shiny app, which allows users to explore
