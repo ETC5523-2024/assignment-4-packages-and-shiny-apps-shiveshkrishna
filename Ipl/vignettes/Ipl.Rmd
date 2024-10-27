@@ -7,14 +7,16 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE, Warning = FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = FALSE,
+  echo = TRUE
 )
 ```
 
-```{r setup}
+```{r}
 library(Ipl)
 library(tidyverse)
 library(ggrepel)
