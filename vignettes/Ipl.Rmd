@@ -1,0 +1,212 @@
+---
+title: "Ipl"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Ipl}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE,
+  echo = TRUE
+)
+```
+
+```{r}
+library(Ipl)
+library(tidyverse)
+library(ggrepel)
+```
+
+## Introduction
+
+The **Ipl** package provides a comprehensive toolkit for analyzing player performance data from the Indian Premier League (IPL), with a focus on helping teams and analysts make data-driven decisions during player auctions. The package focuses on key performance metrics that are particularly relevant to the fast-paced nature of T20 cricket, such as:
+
+-   **Batting Average**: A measure of a batsman’s consistency, representing the number of runs scored per innings.
+-   **Strike Rate**: A critical metric in T20 cricket, reflecting how quickly a batsman scores runs per 100 balls faced.
+-   **Bowling Average**: A measure of a bowler’s effectiveness, calculated as the number of runs conceded per wicket taken.
+-   **Economy Rate**: Another crucial metric in T20 cricket, indicating the number of runs conceded per over bowled.
+
+In the IPL, player selection during auctions is often based on these key metrics, as they reflect a player’s ability to either accelerate the scoring rate or restrict the opposition from scoring quickly. This package allows users to explore these metrics through visualizations and interactive applications, making it easier to identify players who balance consistency with game-changing impact.
+
+This vignette will guide you through: 1. Installing and using the package. 2. Launching the interactive **Shiny app** to visualize IPL player performance. 3. Exploring and analyzing the **IPL 2022 player dataset** included in the package, with detailed examples of **batting** and **bowling** performance analyses.
+
+By the end of this vignette, you’ll be able to use the package to analyze IPL player metrics and develop insights that can enhance your auction strategies and team-building decisions.
+
+## Launching the Shiny App
+
+The **Ipl** package includes an interactive **Shiny app** to explore key IPL player performance metrics like **Batting Average**, **Strike Rate**, **Bowling Average**, and **Economy Rate**. This app helps teams analyze players for IPL auction strategy.
+
+### How to Launch the App
+
+Use the following command `launch_app()` to launch the app:
+
+```{r}
+# Launch the IPL Shiny app
+#launch_app()
+```
+
+### Features
+
+1.  **Player Type Filter**: Choose between **Batsman** and **Bowler** to display relevant performance metrics.
+2.  **Team Filter**: Select a specific team or choose **All** to explore players from all teams.
+3.  **Interactive Scatter Plots**:
+    -   **Batsmen**: Displays **Batting Average vs Strike Rate**, with larger, darker bubbles indicating players who have scored more runs.
+    -   **Bowlers**: Displays **Bowling Average vs Economy Rate**, with larger, darker bubbles representing players who have taken more wickets.
+
+### Example Usage
+
+1.  Launch the app using `launch_app()`.
+2.  Filter by **Player Type** and **Team** to explore batting or bowling performance.
+3.  Analyze:
+    -   **Batsmen**: Higher strike rates and averages indicate ideal players for fast scoring in T20 cricket.
+    -   **Bowlers**: Lower economy rates and bowling averages reflect effective bowlers who control runs while taking wickets.
+
+This app is a powerful tool for visualizing IPL player performance and aiding auction decisions.
+
+## Exploring the Dataset
+
+The **Ipl** package provides a cleaned dataset of IPL player performance called `ipl_high_performers`. This dataset includes key performance metrics for batsmen and bowlers from the 2022 IPL season, helping you conduct deeper analyses.
+
+### Loading the Dataset
+
+To load and explore the dataset, use the following code:
+
+```{r}
+# Load the cleaned IPL dataset
+data("ipl_high_performers", package = "Ipl")
+
+# View the first few rows of the dataset
+head(ipl_high_performers)
+```
+
+### Dataset Overview
+
+The dataset contains the following key columns: - **Name**: Player's name. - **Team**: The IPL team the player is part of. - **BattingAVG**: The batting average of the player. - **BattingS/R**: The strike rate of the player (runs per 100 balls). - **BowlingAVG**: The bowling average of the player (runs conceded per wicket). - **EconomyRate**: The economy rate (runs conceded per over). - **RunsScored**: Total runs scored by the player. - **Wickets**: Total wickets taken by the player.
+
+### Example Usage
+
+You can use this dataset to perform custom analyses. For example, you might want to filter and visualize players based on their performance metrics:
+
+```{r}
+# Filter for players who scored more than 3000 runs
+top_batsmen <- ipl_high_performers %>%
+  filter(RunsScored > 3000)
+
+# View the first few top-performing batsmen
+head(top_batsmen)
+```
+
+This dataset provides all the necessary information to analyze IPL players and make informed decisions about which players to focus on for T20 cricket.
+
+## Batting Performance Analysis
+
+In this section, we’ll analyze the relationship between **Batting Average** and **Strike Rate** for batsmen who have scored more than 3000 runs in the IPL. This analysis helps identify players who balance consistency with fast scoring, which is crucial in T20 cricket.
+
+### Visualizing Batting Performance
+
+You can create a scatter plot to visualize how batsmen compare on two key metrics: **Batting Average** and **Strike Rate**. Here’s how to generate the plot using the dataset provided in the package:
+
+```{r}
+# Load necessary libraries
+library(ggplot2)
+library(ggrepel)
+
+# Filter for top-performing batsmen with more than 3000 runs
+top_batsmen <- ipl_high_performers %>%
+  filter(RunsScored > 3000)
+
+# Create a scatter plot of Batting Average vs Strike Rate
+ggplot(top_batsmen, aes(x = BattingAVG, y = `BattingS/R`, label = Surname)) +
+  geom_point(aes(color = RunsScored, size = RunsScored), alpha = 0.7) +
+  geom_text_repel(size = 3, box.padding = 0.5, point.padding = 0.5) +
+  scale_color_gradient(low = "blue", high = "red") +
+  scale_size(range = c(3, 8)) +
+  labs(
+    x = "Batting Average",
+    y = "Strike Rate",
+    title = "Batting Average vs Strike Rate for Batsmen with Over 3000 Runs",
+    subtitle = "Larger and darker bubbles represent higher runs scored",
+    caption = "Data source: IPL 2022 player statistics"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(face = "bold", size = 12),
+    plot.subtitle = element_text(size = 10, color = "gray50"),
+    plot.caption = element_text(size = 8, color = "gray60")
+  )
+```
+
+### Interpreting the Plot
+
+-   **X-Axis (Batting Average)**: Reflects how consistent the player is across innings. Higher averages indicate a more consistent player.
+-   **Y-Axis (Strike Rate)**: Shows how quickly the player scores runs. A higher strike rate is crucial in T20 cricket as it reflects the player’s ability to score rapidly.
+-   **Bubble Size and Color**: Larger and darker bubbles represent players who have scored more runs overall, highlighting players with both volume and impact.
+
+
+## Bowling Performance Analysis
+
+In this section, we’ll analyze the relationship between **Bowling Average** and **Economy Rate** for bowlers who have taken more than 90 wickets in the IPL. This analysis helps identify bowlers who are not only effective at taking wickets but also skilled at restricting the run rate—both essential traits in T20 cricket.
+
+### Visualizing Bowling Performance
+
+You can create a scatter plot to visualize how bowlers compare on two key metrics: **Bowling Average** and **Economy Rate**. Here’s how to generate the plot using the dataset provided in the package:
+
+``` {r eval=FALSE}
+# Filter for top-performing bowlers with more than 90 wickets
+top_bowlers <- ipl_high_performers %>%
+  filter(Wickets > 90)
+
+# Create a scatter plot of Bowling Average vs Economy Rate
+ggplot(top_bowlers, aes(x = BowlingAVG, y = EconomyRate, label = Surname)) +
+  geom_point(aes(color = Wickets, size = Wickets), alpha = 0.7) +
+  geom_text_repel(size = 3, box.padding = 0.5, point.padding = 0.5) +
+  scale_color_gradient(low = "blue", high = "red") +
+  scale_size(range = c(3, 8)) +
+  labs(
+    x = "Bowling Average",
+    y = "Economy Rate",
+    title = "Bowling Average vs Economy Rate for Bowlers with Over 90 Wickets",
+    subtitle = "Larger and darker bubbles represent more wickets taken",
+    caption = "Data source: IPL 2022 player statistics"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(face = "bold", size = 12),
+    plot.subtitle = element_text(size = 10, color = "gray50"),
+    plot.caption = element_text(size = 8, color = "gray60")
+  )
+```
+
+### Interpreting the Plot
+
+-   **X-Axis (Bowling Average)**: Shows how many runs a bowler concedes per wicket. Lower averages indicate more effective bowlers who take wickets regularly.
+-   **Y-Axis (Economy Rate)**: Reflects how many runs a bowler concedes per over. Lower economy rates signify a bowler’s ability to restrict runs—essential in T20 cricket.
+-   **Bubble Size and Color**: Larger and darker bubbles represent bowlers who have taken more wickets, making them valuable assets in restricting runs and breaking partnerships.
+
+
+## Conclusion
+
+The **Ipl** package offers a comprehensive toolset for IPL teams, analysts, and fans to explore player performance data, focusing on key metrics that drive success in T20 cricket. By analyzing critical factors like **Batting Average**, **Strike Rate**, **Bowling Average**, and **Economy Rate**, users can make informed decisions about player selection and auction strategies.
+
+### Key Takeaways:
+
+-   **Batting Performance**: Players with a high strike rate are often more valuable in T20 cricket, where quick scoring can make the difference between winning and losing. The analysis of **Batting Average vs Strike Rate** helps identify players who balance consistency with explosiveness, making them ideal candidates for IPL auctions.
+
+-   **Bowling Performance**: Bowlers who maintain a low economy rate while consistently taking wickets are crucial for controlling the opposition’s scoring. The analysis of **Bowling Average vs Economy Rate** highlights bowlers who can both take wickets and limit runs, making them valuable assets in high-pressure situations. 
+
+### Use the Shiny App for Interactive Exploration
+
+For a more interactive exploration of IPL player data, the **Shiny app** provided in the package allows users to filter players by type and team, providing dynamic visualizations of batting and bowling performance. This tool is particularly useful for IPL teams looking to fine-tune their auction strategy by evaluating players based on data-driven insights.
+
+### Additional Resources
+
+For more detailed documentation on functions and examples of how to use the package, visit the package website or explore the vignettes available on the **pkgdown** site.
+
+By leveraging the data and tools provided in this package, IPL teams and analysts can optimize their player selections and make strategic decisions that align with the fast-paced demands of T20 cricket.
