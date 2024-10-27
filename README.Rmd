@@ -11,12 +11,31 @@ The **Ipl** package provides tools to analyze and explore IPL 2022 player perfor
 
 You can install the development version of the package from GitHub:
 
-
-
+```{r github,eval=FALSE}
+devtools::install_github("ETC5523-2024/assignment-4-packages-and-shiny-apps-shiveshkrishna
+```
 
 ## Pkgdown Site
 
-For full documentation and additional details, visit the Pkgdown Site.
+For full documentation and additional details, visit the Pkgdown [Site](https://etc5523-2024.github.io/assignment-4-packages-and-shiny-apps-shiveshkrishna/).
+
+## Shiny App
+
+The `Ipl` package includes an interactive Shiny app for exploring IPL 2022 player performance data. To launch the app, use the following command:
+
+```{r}
+# Load the Ipl package and launch the Shiny app
+library(Ipl)
+launch_app()
+```
+
+The app enables you to:
+
+-   **Filter the data**: Select between batsmen and bowlers, and choose specific teams or view all teams.
+-   **View interactive visualizations**: Examine scatter plots showing key metrics like Batting Average vs. Strike Rate for batsmen, and Bowling Average vs. Economy Rate for bowlers.
+-   **Discover trends and insights**: Identify high-performing players based on IPL data, useful for auction strategies and team performance analysis.
+
+This app is designed to support IPL teams, analysts, and fans in making data-driven decisions by visualizing essential performance metrics.
 
 ## Documentation
 

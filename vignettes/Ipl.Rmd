@@ -207,6 +207,6 @@ For a more interactive exploration of IPL player data, the **Shiny app** provide
 
 ### Additional Resources
 
-For more detailed documentation on functions and examples of how to use the package, visit the package website or explore the vignettes available on the **pkgdown** site.
+For more detailed documentation on functions and examples of how to use the package, visit the package website or explore the vignettes available on the **pkgdown** [site](https://etc5523-2024.github.io/assignment-4-packages-and-shiny-apps-shiveshkrishna/).
 
 By leveraging the data and tools provided in this package, IPL teams and analysts can optimize their player selections and make strategic decisions that align with the fast-paced demands of T20 cricket.
