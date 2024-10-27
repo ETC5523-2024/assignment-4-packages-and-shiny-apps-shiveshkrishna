@@ -11,11 +11,12 @@ The **Ipl** package provides tools to analyze and explore IPL 2022 player perfor
 
 You can install the development version of the package from GitHub:
 
-\`\`\`r \# Install Ipl from GitHub remotes::install_github("yourusername/Ipl")
+
+
 
 ## Pkgdown Site
 
-For full documentation and additional details, visit the Pkgdown Site.
+For full documentation and additional details, visit the Pkgdown Site.
 
 ## Documentation
 
@@ -27,8 +28,8 @@ The package includes the following key functions, which are documented on the Pk
 
 ## Contributing
 
-Feel free to open issues and submit pull requests for improvements. Make sure to follow best practices and document your code with `roxygen2`.
+Feel free to open issues and submit pull requests for improvements. Make sure to follow best practices and document your code with `roxygen2`.
 
 ## License
 
-This package is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+This package is licensed under the MIT License.

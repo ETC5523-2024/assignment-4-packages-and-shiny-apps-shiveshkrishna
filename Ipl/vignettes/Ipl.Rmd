@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(Ipl)
 library(tidyverse)
+library(ggrepel)
 ```
 
 ## Introduction
@@ -145,13 +146,6 @@ ggplot(top_batsmen, aes(x = BattingAVG, y = `BattingS/R`, label = Surname)) +
 -   **Y-Axis (Strike Rate)**: Shows how quickly the player scores runs. A higher strike rate is crucial in T20 cricket as it reflects the player’s ability to score rapidly.
 -   **Bubble Size and Color**: Larger and darker bubbles represent players who have scored more runs overall, highlighting players with both volume and impact.
 
-### Key Insights
-
--   **High Strike Rate and Batting Average**: Players like **KL Rahul** and **David Warner** appear in the upper-right corner, indicating both high averages and strike rates. These players are reliable and explosive, making them ideal for the IPL auction.
--   **Explosive Yet Inconsistent Batsmen**: Players like **Kieron Pollard** have high strike rates but lower averages, meaning they can score quickly but may not be consistent. These players are valuable in high-pressure moments.
--   **Stable but Slow Batsmen**: Players like **Ajinkya Rahane** have high averages but lower strike rates, which could make them slower in T20 formats, where quick runs are vital.
-
-This analysis provides valuable insights for IPL auction strategy, allowing teams to prioritize players who not only score consistently but also do so at a fast pace.
 
 ## Bowling Performance Analysis
 
@@ -194,13 +188,6 @@ ggplot(top_bowlers, aes(x = BowlingAVG, y = EconomyRate, label = Surname)) +
 -   **Y-Axis (Economy Rate)**: Reflects how many runs a bowler concedes per over. Lower economy rates signify a bowler’s ability to restrict runs—essential in T20 cricket.
 -   **Bubble Size and Color**: Larger and darker bubbles represent bowlers who have taken more wickets, making them valuable assets in restricting runs and breaking partnerships.
 
-### Key Insights
-
--   **Low Economy and Bowling Average**: Bowlers like **Rashid Khan** and **Jasprit Bumrah** are in the lower-left quadrant, reflecting both low economy rates and low bowling averages. These bowlers are essential in controlling the game, especially in high-pressure moments such as death overs.
--   **Wicket-Takers with Higher Economy**: Bowlers like **Dwayne Bravo** take a lot of wickets but may concede more runs. These bowlers are still valuable, particularly for teams that need breakthroughs during crucial moments.
--   **Economical but Fewer Wickets**: Bowlers like **Ravichandran Ashwin** may not take as many wickets but maintain a low economy rate, making them reliable options for containing the opposition during middle overs.
-
-This analysis helps IPL teams identify bowlers who are not only efficient in taking wickets but also skilled at maintaining control over the opposition’s scoring rate.
 
 ## Conclusion
 
